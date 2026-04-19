@@ -11,10 +11,10 @@ app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
 
-app.post('/api/groups/create', (req, res) => { //for the createStudyGroup.js file, this is the endpoint we will send the form data to
-    const group = req.body;
+app.post('/api/groups/create', (req, res) => {
+    console.log("ROUTE HIT");
 
-    console.log("Received from frontend:", group);
+    const group = req.body;
 
     res.json({
         message: "Study group created!",

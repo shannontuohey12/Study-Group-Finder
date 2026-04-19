@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Study Group</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <h1 class="logo">StudyNest</h1>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- FORM SECTION -->
+    <section class="form-section">
+        <h2>Create a Study Group</h2>
+
+        <form id="createStudyGroupForm" class="group-form">
+
+            <input type="text" id="studyGroupTitle" placeholder="Group Name" required>
+
+            <input type="text" id="subject" placeholder="Subject (e.g. CS, Math)" required>
+
+            <input type="date" id="date" required>
+
+            <input type="time" id="time" required>
+
+            <button type="submit" class="primary-btn">Create Group</button>
+
+        </form>
+
+        <p id="statusMessage"></p>
+    </section>
+
+    <script>
+        const form = document.getElementById("createStudyGroupForm");
+        const statusMessage = document.getElementById("statusMessage");
+
+        form.addEventListener('submit', createStudyGroup);
+
+        async function createStudyGroup(e) {
+            e.preventDefault();
+
+            const data = {
+                studyGroupTitle: document.getElementById("studyGroupTitle").value,
+                subject: document.getElementById("subject").value,
+                date: document.getElementById("date").value,
+                time: document.getElementById("time").value
+            };
+
+            try {
+                const response = await fetch('http://localhost:3000/api/groups/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const text = await response.text();
+                console.log("RAW RESPONSE:", text);
+
+                statusMessage.textContent = "✅ Group created successfully!";
+                statusMessage.style.color = "green";
+
+                form.reset();
+
+                console.log(result);
+
+            } catch (error) {
+    console.error("FULL ERROR:", error);
+    statusMessage.textContent = "❌ Error creating group.";
+    statusMessage.style.color = "red";
+}
+            
+        }
+    </script>
+
+</body>
+</html>
