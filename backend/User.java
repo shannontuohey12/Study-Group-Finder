@@ -1,35 +1,46 @@
-public class User {
-    private String username;
+public abstract class User {
+    private String name;
+    private int userID;
     private String password;
-    private String email;
-
-    public User(String username, String password, String email) {
-        this.username = username;
+    private String role;
+    
+    public User(String name, int userID, String password, String role) {
+        this.name = name;
+        this.userID = userID;
         this.password = password;
-        this.email = email;
+        this.role = role;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public int getUserID() {
+        return userID;
     }
 
     public String getPassword() {
         return password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
