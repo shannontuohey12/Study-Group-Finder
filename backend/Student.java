@@ -1,27 +1,39 @@
-public class Student extends User {
-    private String major;
-    private int year;
+import java.util.List;
 
-    public Student(String name, int userID, String password, String role, String major, int year) {
+class Student extends User {
+    private String major;
+
+    public Student(String name, int userID, String password, String role, String major) {
         super(name, userID, password, role);
         this.major = major;
-        this.year = year;
+    }
+
+    public Student(String name, int userID, String role, String major){
+        super(name, userID, major, role);
+        this.major = major;
     }
 
     public String getMajor() {
         return major;
     }
 
-    public int getYear() {
-        return year;
-    }
-
     public void setMajor(String major) {
         this.major = major;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+
+    public List<StudyGroup> getStudyGroups() {
+        return List.of();
     }
+
+    
+    @Override
+    public void displayInfo() {
+        System.out.println("Name: " + getName());
+        System.out.println("User ID: " + getUserID());
+        System.out.println("Role: " + getRole());
+        System.out.println("Major: " + major);
+    }
+
 
 }

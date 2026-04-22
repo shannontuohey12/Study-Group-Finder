@@ -43,4 +43,6 @@ abstract class User {
         this.role = role;
     }
 
+    public abstract void displayInfo();
+
 }
